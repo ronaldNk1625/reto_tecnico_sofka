@@ -4,13 +4,13 @@
 
 Este repositorio contiene la solución integral a las tres dimensiones evaluadas:
 
-1. 🧠 **Parte A: Conceptos Teóricos sobre Calidad y Automatización** (Guía y justificación de respuestas ISTQB & Agile).
-2. ⚙️ **Parte B: Automatización de Flujos Funcionales**
-   - **Ejercicio 1:** Automatización E2E Frontend en [Demoblaze](https://www.demoblaze.com/) con **Serenity BDD + Cucumber (Screenplay Pattern)**.
-   - **Ejercicio 2:** Automatización de Servicios REST en [Swagger Petstore](https://petstore.swagger.io/) con **Karate DSL**.
-3. 📊 **Parte C: Análisis y Pruebas de Rendimiento**
-   - **Ejercicio 1:** Script de Pruebas de Carga en [FakeStore Login](https://fakestoreapi.com/auth/login) parametrizado con CSV (>= 20 TPS, p95 <= 1.5s, Error < 3%) con **K6** y **Apache JMeter**.
-   - **Ejercicio 2:** **Informe Técnico y Ejecutivo de Rendimiento (`InformeResultados.doc` / `InformeResultados.docx`)** con análisis de saturación, fallas 5xx y diagrama de monitoreo (VUs vs. Throughput).
+⚙️ **Parte B: Automatización de Flujos Funcionales**
+
+- **Ejercicio 1:** Automatización E2E Frontend en [Demoblaze](https://www.demoblaze.com/) con **Serenity BDD + Cucumber (Screenplay Pattern)**.
+- **Ejercicio 2:** Automatización de Servicios REST en [Swagger Petstore](https://petstore.swagger.io/) con **Karate DSL**.
+  📊 **Parte C: Análisis y Pruebas de Rendimiento**
+- **Ejercicio 1:** Script de Pruebas de Carga en [FakeStore Login](https://fakestoreapi.com/auth/login) parametrizado con CSV (>= 20 TPS, p95 <= 1.5s, Error < 3%) con **K6** y **Apache JMeter**.
+- **Ejercicio 2:** **Informe Técnico y Ejecutivo de Rendimiento (`InformeResultados.doc` / `InformeResultados.docx`)** con análisis de saturación, fallas 5xx y diagrama de monitoreo (VUs vs. Throughput).
 
 ---
 
@@ -84,6 +84,7 @@ d:/Prueba_Practica_Sofka/
 ## 🚀 Instrucciones Generales de Ejecución
 
 ### Prerrequisitos
+
 - **Java JDK:** OpenJDK 17 o superior.
 - **Apache Maven:** 3.8 o superior.
 - **Node.js / Python 3:** Para utilitarios y reportería.
@@ -92,33 +93,40 @@ d:/Prueba_Practica_Sofka/
 ---
 
 ### 1. Ejecución de Pruebas de API REST (Karate DSL - PetStore)
+
 ```bash
 cd parte_b_automatizacion/ejercicio2_karate_petstore
 mvn clean test
 ```
-*Reporte visual generado en:* `target/karate-reports/karate-summary.html`
+
+_Reporte visual generado en:_ `target/karate-reports/karate-summary.html`
 
 ---
 
 ### 2. Ejecución de Pruebas E2E (Serenity BDD - Demoblaze)
+
 ```bash
 cd parte_b_automatizacion/ejercicio1_serenity_demoblaze
 mvn clean verify
 ```
-*Reporte visual generado en:* `target/site/serenity/index.html`
+
+_Reporte visual generado en:_ `target/site/serenity/index.html`
 
 ---
 
 ### 3. Ejecución de Pruebas de Carga (K6 - Login FakeStore)
+
 ```bash
 cd parte_c_performance/ejercicio1_script_carga/k6
 k6 run script_login.js
 ```
-*Reporte visual generado en:* `parte_c_performance/ejercicio1_script_carga/k6/reporte_k6_summary.html`
+
+_Reporte visual generado en:_ `parte_c_performance/ejercicio1_script_carga/k6/reporte_k6_summary.html`
 
 ---
 
 ### 4. Consulta del Informe de Rendimiento (Análisis de Resultados)
+
 - **Documento Word (.doc / .docx):** `parte_c_performance/ejercicio2_analisis_resultados/InformeResultados.doc`
 - **Documento Markdown:** `parte_c_performance/ejercicio2_analisis_resultados/InformeResultados.md`
 
