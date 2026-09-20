@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Pruebas de Carga - FakeStore Login (K6)</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f9; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h1 { color: #0E2B5C; border-bottom: 2px solid #2980B9; padding-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 25px 0; }
+        .card { background: #f8f9fa; border-left: 5px solid #2980B9; padding: 15px; border-radius: 4px; }
+        .card.success { border-left-color: #27ae60; }
+        .card.danger { border-left-color: #e74c3c; }
+        .card-title { font-size: 13px; text-transform: uppercase; color: #7f8c8d; font-weight: bold; }
+        .card-val { font-size: 24px; font-weight: bold; color: #2c3e50; margin-top: 5px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #0E2B5C; color: white; }
+        .badge-ok { background: #27ae60; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        .badge-err { background: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        .footer { margin-top: 30px; text-align: right; font-size: 12px; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reporte de Pruebas de Carga - FakeStore API Login</h1>
+        <p><strong>Endpoint:</strong> <code>POST https://fakestoreapi.com/auth/login</code> | <strong>Herramienta:</strong> K6 Performance Tester</p>
+        
+        <div class="grid">
+            <div class="card success">
+                <div class="card-title">Throughput (TPS)</div>
+                <div class="card-val">21.30 TPS</div>
+                <small>SLA >= 20 TPS</small>
+            </div>
+            <div class="card danger">
+                <div class="card-title">Tiempo de Respuesta p(95)</div>
+                <div class="card-val">2958.49 ms</div>
+                <small>SLA <= 1500 ms</small>
+            </div>
+            <div class="card success">
+                <div class="card-title">Tasa de Errores</div>
+                <div class="card-val">0.00%</div>
+                <small>SLA < 3%</small>
+            </div>
+            <div class="card">
+                <div class="card-title">Peticiones Totales</div>
+                <div class="card-val">713</div>
+                <small>Promedio: 650.85 ms</small>
+            </div>
+        </div>
+
+        <h3>Cumplimiento de SLAs y Validaciones</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Validación / Criterio</th>
+                    <th>Objetivo SLA</th>
+                    <th>Valor Obtenido</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Rendimiento de Transacciones (TPS)</strong></td>
+                    <td>>= 20.0 TPS</td>
+                    <td>21.30 TPS</td>
+                    <td><span class="badge-ok">CUMPLE</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Tiempo de Respuesta p(95)</strong></td>
+                    <td><= 1500 ms (1.5s)</td>
+                    <td>2958.49 ms</td>
+                    <td><span class="badge-err">FALLA</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Tiempo de Respuesta Promedio</strong></td>
+                    <td><= 1500 ms (1.5s)</td>
+                    <td>650.85 ms</td>
+                    <td><span class="badge-ok">CUMPLE</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Tasa de Fallos (Error Rate)</strong></td>
+                    <td>< 3.00%</td>
+                    <td>0.00%</td>
+                    <td><span class="badge-ok">CUMPLE</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="footer">
+            Generado automáticamente por K6 Load Test Runner | Sofka Quality Engineering Reto Técnico
+        </div>
+    </div>
+</body>
+</html>

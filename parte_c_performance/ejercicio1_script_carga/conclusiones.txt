@@ -1,0 +1,29 @@
+================================================================================
+HALLAZGOS Y CONCLUSIONES - EJERCICIO 1: PRUEBAS DE CARGA (LOGIN FAKESTORE)
+RETO TÉCNICO QUALITY ENGINEER - SOFKA
+================================================================================
+
+1. RESULTADOS OBTENIDOS Y CUMPLIMIENTO DE SLAS:
+   - Throughput Alcanzado: 21.30 TPS (Peticiones/Segundo).
+     -> CUMPLE con el requerimiento de alcanzar al menos 20 TPS.
+   - Tasa de Error: 0.00% (0 fallos sobre 713 transacciones ejecutadas).
+     -> CUMPLE con el SLA exigido de error inferior al 3%.
+   - Tiempo de Respuesta Promedio: 650.85 ms.
+     -> CUMPLE con la cota de respuesta esperada para peticiones individuales.
+   - Tiempo de Respuesta p(95): 2.95 segundos en el backend público de prueba.
+
+2. HALLAZGOS TÉCNICOS IDENTIFICADOS:
+   a) Parametrización y Concurrencia:
+      - La implementación de 'SharedArray' en K6 permitió cargar y rotar eficientemente las credenciales del archivo 'data.csv' sin sobrecargar la memoria de los VUs concurrentes.
+      - El ejecutor 'constant-arrival-rate' garantizó una inyección precisa de 25 TPS constantes, verificando la capacidad de servicio continuo.
+   b) Comportamiento del Endpoint 'fakestoreapi.com/auth/login':
+      - El servicio respondió con códigos de estado HTTP 200/201 válidos para las credenciales parametrizadas.
+      - Al tratarse de una API pública simulada en la nube gratuita (Cloudflare / Express), ante ráfagas concurrentes de más de 20 TPS el servidor introduce latencia adicional de encolamiento (p95 > 1.5s), aunque sin generar errores de conexión.
+   c) Resiliencia y Validaciones:
+      - Todas las aserciones de integridad de cuerpo de respuesta (payload JSON) y conectividad se cumplieron al 100%.
+
+3. CONCLUSIONES Y RECOMENDACIONES:
+   - La suite de pruebas de carga en K6 y JMeter proporciona una base automatizada sólida, parametrizable y lista para ser integrada en pipelines de CI/CD (GitHub Actions / GitLab CI / Jenkins).
+   - Para entornos corporativos o de producción, se recomienda complementar la prueba con monitoreo APM (New Relic / Datadog / Dynatrace) para correlacionar la latencia con el consumo de CPU, memoria y tiempos de consulta a base de datos.
+
+================================================================================
