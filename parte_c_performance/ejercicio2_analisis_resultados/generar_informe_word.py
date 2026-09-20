@@ -4,18 +4,16 @@ import matplotlib.ticker as ticker
 from docx import Document
 from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.enum.table import WD_TABLE_ALIGNMENT, WD_ALIGN_VERTICAL
+from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement, parse_xml
 from docx.oxml.ns import nsdecls, qn
 
 def set_cell_background(cell, hex_color):
-    """Set background color of a table cell."""
     tcPr = cell._tc.get_or_add_tcPr()
     shd = parse_xml(f'<w:shd {nsdecls("w")} w:fill="{hex_color}"/>')
     tcPr.append(shd)
 
 def set_cell_margins(cell, top=100, bottom=100, left=150, right=150):
-    """Set padding for table cells in dxa."""
     tcPr = cell._tc.get_or_add_tcPr()
     tcMar = OxmlElement('w:tcMar')
     for m, val in [('top', top), ('bottom', bottom), ('left', left), ('right', right)]:
@@ -54,7 +52,6 @@ def generate_charts(output_dir):
     # Highlight crash area
     ax1.axvspan('01:52', '02:02', color='#ffcccc', alpha=0.5, label='Zona de Colapso / Saturación (Stage 1)')
     
-    # Title & Legend
     plt.title('Comportamiento de Throughput vs. Usuarios Virtuales (VUs)\nIdentificación del Punto de Quiebre (Knee Point)', fontsize=13, fontweight='bold', pad=15)
     
     lines = line1 + line2
@@ -69,7 +66,6 @@ def generate_charts(output_dir):
     # 2. Chart: Error Distribution
     fig, (ax_pie, ax_bar) = plt.subplots(1, 2, figsize=(11, 4.5), dpi=300)
     
-    # Pie chart
     labels_pie = ['Transacciones Exitosas\n(97.55% - 269,891)', 'Fallas / Errores\n(2.44% - 6,759)']
     sizes_pie = [269891, 6759]
     colors_pie = ['#2ca02c', '#d62728']
@@ -79,7 +75,6 @@ def generate_charts(output_dir):
                shadow=True, startangle=140, textprops={'fontsize': 10, 'weight': 'bold'})
     ax_pie.set_title('Tasa Global de Éxito vs Fallas', fontsize=12, fontweight='bold', pad=10)
     
-    # Bar chart for errors
     categories = ['5xx Stage 0', '4xx Stage 1', '5xx Stage 1\n(Pico 140 VUs)', '5xx Stage 2']
     error_counts = [1, 769, 5987, 2]
     colors_bar = ['#17becf', '#ff7f0e', '#d62728', '#17becf']
@@ -105,7 +100,6 @@ def generate_charts(output_dir):
 def build_docx_report(output_path, chart1_path, chart2_path):
     doc = Document()
     
-    # Page setup - Margins 1 inch
     sections = doc.sections
     for section in sections:
         section.top_margin = Inches(0.8)
@@ -113,13 +107,11 @@ def build_docx_report(output_path, chart1_path, chart2_path):
         section.left_margin = Inches(0.8)
         section.right_margin = Inches(0.8)
     
-    # Palette Colors
     PRIMARY = RGBColor(14, 43, 92)     # Deep Navy
     SECONDARY = RGBColor(41, 128, 185) # Slate Blue
     ACCENT_RED = RGBColor(192, 57, 43) # Ruby Red
-    TEXT_DARK = RGBColor(44, 62, 80)   # Charcoal
     
-    # Document Title
+    # Title
     p_title = doc.add_paragraph()
     p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     run_title = p_title.add_run("INFORME DE ANÁLISIS DE RENDIMIENTO Y CARGA")
@@ -289,7 +281,6 @@ def build_docx_report(output_path, chart1_path, chart2_path):
     p.add_run("269,891 checks exitosos (97.55%)").bold = True
     p.add_run(". El desglose por etapas y códigos de estado revela la causa directa del problema:")
     
-    # Add chart 2 image
     if os.path.exists(chart2_path):
         doc.add_picture(chart2_path, width=Inches(6.5))
         p_cap = doc.add_paragraph()
@@ -298,7 +289,6 @@ def build_docx_report(output_path, chart1_path, chart2_path):
         r_cap.font.size = Pt(8.5)
         r_cap.font.italic = True
     
-    # Stage breakdown list
     p = doc.add_paragraph(style='List Bullet')
     r = p.add_run("Stage 0 (Inicialización y Carga Base): ")
     r.bold = True
@@ -415,7 +405,6 @@ def build_docx_report(output_path, chart1_path, chart2_path):
             
     doc.add_paragraph().paragraph_format.space_after = Pt(12)
     
-    # Sign-off
     p_sign = doc.add_paragraph()
     p_sign.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     r_s = p_sign.add_run("Elaborado por: Ronald\nAnalista de Automatización / Quality Engineer\nSofka Technologies")
@@ -433,7 +422,6 @@ if __name__ == '__main__':
     docx_path = os.path.join(base_dir, "InformeResultados.docx")
     doc_path = os.path.join(base_dir, "InformeResultados.doc")
     build_docx_report(docx_path, c1, c2)
-    # Also save as .doc (binary copy)
     with open(docx_path, 'rb') as src, open(doc_path, 'wb') as dst:
         dst.write(src.read())
     print("Both InformeResultados.docx and InformeResultados.doc created successfully.")
