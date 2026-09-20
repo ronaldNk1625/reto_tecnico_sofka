@@ -1,0 +1,44 @@
+# Compiled class files
+target/
+*.class
+
+# Log files
+*.log
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Virtual machine crash logs
+hs_err_pid*
+replay_pid*
+
+# IDE and Editor files
+.idea/
+*.iml
+*.iws
+.project
+.classpath
+.settings/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Serenity temporary files
+.serenity/
+
+# JMeter temporary result files
+*.jtl
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+npm-debug.log*

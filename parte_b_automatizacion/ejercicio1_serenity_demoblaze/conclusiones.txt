@@ -1,0 +1,24 @@
+================================================================================
+HALLAZGOS Y CONCLUSIONES - EJERCICIO 1: AUTOMATIZACIÓN E2E (DEMOBLAZE)
+RETO TÉCNICO QUALITY ENGINEER - SOFKA
+================================================================================
+
+1. RESULTADOS DE LA AUTOMATIZACIÓN:
+   - Flujo E2E Completado con Éxito: Navegación, selección de 2 productos, adición al carrito, validación en tabla, diligenciamiento de formulario de compra y verificación de orden generada.
+   - Patrón de Diseño Implementado: Screenplay Pattern (cumplimiento de principios SOLID, alta reusabilidad, separación de responsabilidades y mantenibilidad).
+   - Reporte Generado: Reporte visual enriquecido de Serenity BDD ("Living Documentation") con capturas de pantalla automáticas paso a paso.
+
+2. HALLAZGOS TÉCNICOS Y DESAFÍOS DE LA APLICACIÓN DEMOBLAZE:
+   a) Manejo de Alertas Nativas de JavaScript:
+      - Al hacer clic en "Add to cart", Demoblaze dispara un cuadro de diálogo nativo 'alert("Product added.")'.
+      - Se encapsuló la interacción 'AceptarAlerta' mediante esperas explícitas con ExpectedConditions.alertIsPresent() de Selenium para evitar bloqueos por llamadas asíncronas y asegurar la continuidad del flujo.
+   b) Naturaleza Asíncrona (AJAX / SPA) de Demoblaze:
+      - La carga del catálogo y la actualización de la tabla del carrito dependen de peticiones AJAX asíncronas de JavaScript.
+      - Para prevenir falsos positivos ('flaky tests') por elementos no interactuables o 'StaleElementReferenceException', se implementaron esperas dinámicas y explícitas (WaitUntil.the(Target, isClickable())) dentro de cada tarea.
+   c) Ventajas del Screenplay Pattern:
+      - A diferencia del clásico Page Object Model (POM), Screenplay enfoca la automatización en las intenciones del usuario (Actores, Tareas y Preguntas), permitiendo crear componentes modulares y legibles tanto para perfiles técnicos como de negocio.
+
+3. CONCLUSIONES:
+   - La implementación en Serenity BDD con Cucumber y Screenplay Pattern cumple con los más altos estándares de calidad de software demandados por Sofka, ofreciendo un código limpio, desacoplado, robusto y con documentación viva auditable.
+
+================================================================================

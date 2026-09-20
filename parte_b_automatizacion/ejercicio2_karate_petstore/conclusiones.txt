@@ -1,0 +1,26 @@
+================================================================================
+HALLAZGOS Y CONCLUSIONES - EJERCICIO 2: AUTOMATIZACIÓN API (SWAGGER PETSTORE)
+RETO TÉCNICO QUALITY ENGINEER - SOFKA
+================================================================================
+
+1. RESULTADOS DE LA AUTOMATIZACIÓN:
+   - Total de Escenarios Automatizados: 5 escenarios (Creación, Búsqueda por ID, Actualización a 'sold', Filtrado por Estatus y Flujo E2E Integrado).
+   - Tasa de Éxito de Ejecución: 100% de escenarios aprobados (Status Code 200 OK y assertions de esquema superadas).
+   - Cobertura de Verificaciones: Códigos HTTP, schemas JSON estrictos ('#number', '#string', '#[]'), payloads anidados y matchers profundos ('contains deep').
+
+2. HALLAZGOS Y COMPORTAMIENTO DE LA API SWAGGER PETSTORE:
+   a) Idempotencia y Manejo de IDs:
+      - Al ser una API pública compartida, la reutilización de IDs estáticos generaba riesgo de colisión o sobrescritura por otros usuarios.
+      - Se implementó una función generadora de identificadores aleatorios únicos (IDs dinámicos de 8 dígitos) en el Background del feature, garantizando total independencia e idempotencia en cada corrida.
+   b) Contrato de Datos y Tipos:
+      - En el endpoint 'POST /pet' y 'PUT /pet', los atributos de categorías y tags aceptan identificadores numéricos y estructuras anidadas.
+      - En 'GET /pet/findByStatus', el servicio retorna una lista de objetos donde las validaciones difusas ('contains deep') aseguran encontrar la mascota modificada sin importar el orden ni el volumen total de mascotas registradas por terceros.
+   c) Ventajas del uso de Karate DSL frente a otros frameworks:
+      - Simplicidad y legibilidad nativa en BDD (Gherkin puro) sin requerir escribir código Java "pegamento" (glue/step definitions) repetitivo.
+      - Motor de aserciones JSON integrado altamente potente y expresivo.
+      - Generación automática de reportes HTML detallados con trazabilidad completa de Request, Response, Headers y tiempos de latencia por paso.
+
+3. CONCLUSIÓN:
+   - La suite de pruebas en Karate DSL cumple cabalmente con todos los requerimientos funcionales solicitados, demostrando buenas prácticas de testing de servicios web REST, validaciones de contrato y mantenibilidad.
+
+================================================================================
