@@ -1,0 +1,74 @@
+================================================================================
+GUÍA RÁPIDA PARA LLENAR EL FORMULARIO DE GOOGLE - PRUEBA TEÓRICA SOFKA QE
+Enlace del Formulario: https://forms.gle/4JdGMWarSAjvq5Qp8
+================================================================================
+
+1. Nombres y Apellidos:
+   -> [Escribe aquí tus Nombres y Apellidos Completos]
+
+2. (Sección informativa)
+
+3. ¿El análisis Estático es?
+   -> Seleccionar: "Puede involucrar el análisis de requisitos, diseño o código."
+
+4. La cobertura de código es usado como una medida de:
+   -> Seleccionar: "Eficacia de pruebas."
+
+5. Las pruebas de caja negra se denominan también:
+   -> Seleccionar: "Pruebas funcionales."
+
+6. ¿Por qué la automatización de pruebas es una habilidad necesaria en los testers asignados a un proyecto?
+   -> Seleccionar: "Las pruebas de regresión pueden ser un proceso paralelo en toda la etapa de pruebas y solo puede lograrse automatizando las pruebas."
+
+7. ¿Cuál de las siguientes opciones respalda el enfoque de todo el equipo en el desarrollo ágil?
+   -> Seleccionar: "Reunión diaria de stand-up."
+
+8. ¿Cuál de las siguientes opciones es el método de "creación colaborativa de criterios de prueba de aceptación", que se usa para crear pruebas de aceptación antes de que la entrega comience?
+   -> Seleccionar: "Desarrollo Guiado por Pruebas de Aceptación (ATDD)."
+
+9. ¿Cómo se conforma la pirámide de pruebas? De abajo hacia arriba
+   -> Seleccionar: "Pruebas Unitarias, Pruebas de Integración / Componentes, Pruebas de Sistema, Pruebas de aceptación."
+
+10. ¿Cuál de las siguientes es cierta acerca de la pirámide de prueba?
+    -> Seleccionar: "Pirámide de pruebas enfatiza tener un gran número de pruebas en los niveles inferiores de la pirámide y, a medida que el desarrollo se mueve a los niveles superiores, el numero de pruebas disminuye."
+
+11. Pedro y su ágil equipo quieren incorporar el "desarrollo guiado por pruebas" (TDD) en la práctica estándar. Brevemente, ¿Qué significa el desarrollo guiado por pruebas?
+    -> Seleccionar: "Que el equipo, diseña y desarrolla pruebas primero antes de desarrollar software de producto para garantizar que el código cumple con los criterios de aceptación."
+
+12. ¿Cuál es el formato típico de una prueba generada mediante el desarrollo basado en el comportamiento (BDD)?
+    -> Seleccionar: "Dado…, cuando…, entonces…, (Given, When, Then)."
+
+13. En un proyecto ágil típico, ¿Quién es responsable de comprender, implementar y actualizar la estrategia de prueba?
+    -> Seleccionar: "Todo el equipo."
+
+14. ¿Cuál de los siguientes NO es típicamente una tarea de probador en un proyecto ágil?
+    -> Seleccionar: "Los probadores se centran en crear pruebas unitarias y las pasan a los desarrolladores."
+
+15. Al final de cada sprint, el equipo nota que hay muchos defectos de integración. ¿Qué puede hacer el equipo para identificar y resolver estos defectos antes?
+    -> Seleccionar: "Utilizar la integración continua para abordar este desafío, fusionando todos los cambios realizados en el software e integrando todos los componentes modificados regularmente, al menos una vez al día."
+
+16. ¿Cuál de las siguientes afirmaciones es cierta sobre Kanban, Scrum y XP?
+    -> Seleccionar: "Scrum propone un marco para la organización de equipos y la gestión de proyectos."
+
+17. Ha habido un cambio en el requerimiento que se desarrolló en la iteración anterior. ¿Qué debe hacer un probador al recibir dicha información?
+    -> Seleccionar: "Responder a los cambios rápidamente, incluyendo cambiar, agregar o mejorar casos de prueba."
+
+18. Un Defecto es:
+    -> Seleccionar: "Desvio respecto del comportamiento esperado del sistema, puede reproducirse en cualquier etapa."
+
+19. Que herramientas son mayormente utilizadas para reproducir defectos:
+    -> Seleccionar: "Herramientas de automatización E2E."
+
+20. ¿Qué información no necesita incluirse en un registro de incidente de prueba?
+    -> Seleccionar: "Cómo solucionar la falla."
+
+21. Señala las características a valorar al ejecutar pruebas de rendimiento:
+    -> Seleccionar: "Tiempos de respuesta."
+
+22. El objetivo de la pruebas de stress es:
+    -> Seleccionar: "Medir cuantos usuarios el sistema puede soportar, que ocurre con el sistema e identificar el punto de falla."
+
+23. Escoge la frase con la que te sientas más identificado:
+    -> Seleccionar: "Soy capaz de sacar a tiempo el trabajo urgente y con la calidad idónea."
+
+================================================================================
