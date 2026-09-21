@@ -18,15 +18,7 @@ Este repositorio contiene la solución integral a las tres dimensiones evaluadas
 
 ```
 d:/Prueba_Practica_Sofka/
-├── docs/                                               # Insumos originales y PDFs del reto
-│   ├── instructivo-automatizador-de-pruebas-4-.pdf
-│   ├── prueba-t-cnica-v5-1-.pdf
-│   └── ejercicio-performance.docx-1-.pdf
-│
-├── parte_a_teoria/                                     # Parte A: Evaluación Teórica
-│   ├── Respuestas_Evaluacion_Teorica.md               # Análisis técnico detallado ISTQB / Agile (23 preguntas)
-│   └── Guia_Rapida_Formulario.txt                     # Guía directa de selección para Google Forms
-│
+
 ├── parte_b_automatizacion/                             # Parte B: Automatización Funcional
 │   ├── ejercicio1_serenity_demoblaze/                 # Ejercicio 1: E2E Frontend Demoblaze
 │   │   ├── pom.xml                                    # Dependencias Serenity BDD 4.x + Cucumber 7.x
